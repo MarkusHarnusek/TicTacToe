@@ -88,13 +88,24 @@ int main(int argc, char *argv[])
     {
         int currentPlayer = 2;
 
+        printf("\033[2J\033[H");
+
+        char player1Name[20] = {0};
+        char player2Name[20] = {0};
+
+        printf("Player 1 name: ");
+        scanf("%s", player1Name);
+
+        printf("Player 2 name: ");
+        scanf("%s", player2Name);
+
         while (checkWinner(field) == 0)
         {
             printf("\033[2J\033[H");
             currentPlayer = currentPlayer == 1 ? 2 : 1;
             printField(field);
 
-            printf("\n--- Player %d ---\n", currentPlayer);
+            printf("\n--- Player %s ---\n", currentPlayer == 1 ? player1Name : player2Name);
 
             bool inputValid = false;
             int x = 0;
