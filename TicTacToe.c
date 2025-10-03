@@ -24,33 +24,32 @@ int checkWinner(int field[3][3]) {
     return 0;
 }
 
-const char* printField(int field[3][3]) {
-    static char result[100] = "";
-    strcpy(result, "+---+---+---+\n");
+void printField(int field[3][3]) {
+    printf("\n+---+---+---+\n");
 
     for (int i = 0; i < 3; i++) {
-        strcat(result, "|");
+        printf("|");
 
         for (int j = 0; j < 3; j++) {
             switch (field[i][j]) {
                 case 0:
-                    strcat(result, "   |");
+                    printf("   |");
                     break;
 
                 case 1:
-                    strcat(result, " X |");
+                    printf(" X |");
                     break;
 
                 case 2:
-                    strcat(result, " O |");
+                    printf(" O |");
                     break;
             }
-        }  
-        
-        strcat(result, "\n+---+---+---+\n");
+        }
+
+        printf("\n+---+---+---+\n");
     }
 
-    return result;
+    return;
 }
 
 int main(int argc, char* argv[]) {
@@ -65,7 +64,7 @@ int main(int argc, char* argv[]) {
     while (checkWinner(field) == 0) {
         printf("\033[2J\033[H");
         currentPlayer = currentPlayer == 1 ? 2 : 1;
-        printf("%s\n", printField(field));
+        printField(field);
         
         printf("\n--- Player %d ---\n", currentPlayer);
 
@@ -80,9 +79,9 @@ int main(int argc, char* argv[]) {
             printf("\nEnter y position: ");
             scanf("%d", &y);
 
-            if (field[x][y] == 0) {
+            if (field[y][x] == 0) {
                 inputValid = true;
-                field[x][y] = currentPlayer;
+                field[y][x] = currentPlayer;
             } else {
                 printf("\nPosition invalid. Try again.\n");
             }
