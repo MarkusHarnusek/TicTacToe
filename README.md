@@ -1,6 +1,6 @@
 # Tic Tac Toe
 
-This is a simple tic tac toe game for c. It features a two player mode with custom player names as well as a algorythmic oponent for the singleplayer.
+This is a simple tic tac toe game for c. It features a two player mode with custom player names as well as a algorithmic oponent for the singleplayer.
 
 ## How to run it
 
